@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/flatlaf-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/flatlaf-extras-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/svgSalamander-1.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/flatlaf-fonts-roboto-2.137.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mysql-connector-j-9.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jfreechart-1.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/itextpdf-5.5.13.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

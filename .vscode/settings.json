@@ -1,0 +1,14 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "libs/flatlaf-3.0.jar",
+        "libs/flatlaf-extras-3.1.jar",
+        "libs/flatlaf-fonts-roboto-2.137.jar",
+        "libs/imageio-webp-3.10.1.jar",
+        "libs/itextpdf-5.5.13.4.jar",
+        "libs/jcalendar-1.4.jar",
+        "libs/jfreechart-1.5.5.jar",
+        "libs/mysql-connector-j-9.2.0.jar",
+        "libs/svgSalamander-1.1.4.jar"
+    ]
+}
