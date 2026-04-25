@@ -217,35 +217,47 @@ public class SanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemSPActionPerformed
 
 
-    private void btnSuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPActionPerformed
-        int row = tblSanPham.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cần sửa!");
-            return;
+    private void btnSuaSPActionPerformed(java.awt.event.ActionEvent evt) {                                         
+                                       
+    int row = tblSanPham.getSelectedRow();
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cần sửa!");
+        return;
+    }
+
+    int perfumeId = (int) tblSanPham.getValueAt(row, 0);
+    int volumeSize = (int) tblSanPham.getValueAt(row, 2); 
+
+    Map<String, Object> sp = SanPhamBUS.getInstance().getChiTietSanPham(perfumeId, volumeSize);
+    if (sp == null || sp.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm.");
+        return;
+    }
+
+    SuaSanPham panel = new SuaSanPham();
+    panel.setPerfumeId(perfumeId);
+    panel.setSanPhamData(sp);
+    panel.setOldVolumeId((int) sp.get("volume_id"));
+
+    JFrame frame = new JFrame("Sửa sản phẩm");
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setContentPane(panel);
+    frame.pack();
+    frame.setLocationRelativeTo(null);
+
+    // --- ĐÂY LÀ ĐOẠN CODE CẦN THÊM VÀO ---
+    frame.addWindowListener(new WindowAdapter() {
+        @Override
+        public void windowClosed(WindowEvent e) {
+            loadTableSanPham(); // Gọi hàm này để load lại bảng sau khi đóng cửa sổ sửa
         }
+    });
+    // ------------------------------------
 
-        int perfumeId = (int) tblSanPham.getValueAt(row, 0);
-        int volumeSize = (int) tblSanPham.getValueAt(row, 2); // cột dung tích
+    frame.setVisible(true);
 
-        Map<String, Object> sp = SanPhamBUS.getInstance().getChiTietSanPham(perfumeId, volumeSize);
-        if (sp == null || sp.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm.");
-            return;
-        }
 
-        SuaSanPham panel = new SuaSanPham();
-        panel.setPerfumeId(perfumeId);
-        panel.setSanPhamData(sp);
-        panel.setOldVolumeId((int) sp.get("volume_id"));
-
-        JFrame frame = new JFrame("Sửa sản phẩm");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setContentPane(panel);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-    }//GEN-LAST:event_btnSuaSPActionPerformed
+    }                                        
 
     private void btnXoaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPActionPerformed
         int row = tblSanPham.getSelectedRow();
